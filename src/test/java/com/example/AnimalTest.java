@@ -3,30 +3,13 @@ package com.example;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnit;
 import org.junit.runners.Parameterized;
-import org.mockito.junit.MockitoRule;
-import org.junit.Rule;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 @RunWith(Parameterized.class)
 
 public class AnimalTest extends TestCase {
-
-    @Mock
-    Animal animal;
-
-    @Rule
-    public MockitoRule mockitoRule = MockitoJUnit.rule();
-
-    @Test
-    public void testDetFamily(){
-        Animal animal = new Animal();
-        String actual = animal.getFamily();
-        assertEquals("Существует несколько семейств: заячьи, беличьи, мышиные, кошачьи, псовые, медвежьи, куньи", actual);
-    }
 
 
     private String animalKind;
@@ -56,11 +39,4 @@ public class AnimalTest extends TestCase {
         assertEquals(actual, expectedList);
     }
 
-
-    @Test
-    public void exceptionTest(){
-        Animal animal = new Animal();
-        Exception e = assertThrows(Exception.class, () -> {animal.getFood("Млекопитающее");});
-        assertEquals("Неизвестный вид животного, используйте значение Травоядное или Хищник", e.getMessage());
-    }
 }
